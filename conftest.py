@@ -10,6 +10,3 @@ def reqres_session():
         yield session
 
 
-@pytest.fixture(scope='session')
-def lambda_steps(request: FixtureRequest):
-    allure.dynamic.title(" ".join(request.node.name.split("_")[1:]).capitalize())

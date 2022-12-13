@@ -1,3 +1,5 @@
+from unittest import result
+
 import allure
 from allure_commons.types import Severity
 from requests import Response
@@ -8,6 +10,7 @@ from pytest_voluptuous import S
 @allure.epic('Test API')
 @allure.feature('POST запрос')
 @allure.severity(Severity.CRITICAL)
+@allure.title('Создание пользователя')
 @allure.step('Запрос для создания пользователя')
 def test_create_user(reqres_session, lambda_steps):
     name = 'Margo'
@@ -26,7 +29,8 @@ def test_create_user(reqres_session, lambda_steps):
 
 @allure.epic('Test API')
 @allure.feature('PUT запрос')
-@allure.severity(Severity.MINOR)
+@allure.severity(Severity.NORMAL)
+@allure.title('Обновление информации о пользователе')
 @allure.step('Запрос для обновления информации о пользователе')
 def test_update_user(reqres_session):
     name = 'Margo'
@@ -46,6 +50,7 @@ def test_update_user(reqres_session):
 @allure.epic('Test API')
 @allure.feature('GET запрос')
 @allure.severity(Severity.MINOR)
+@allure.title('Поиск незарегистрированного пользователя')
 @allure.step('Пользователь не найден')
 def test_user_not_found(reqres_session, lambda_steps):
     result: Response = reqres_session.get(url='/api/unknown/23')
@@ -59,6 +64,7 @@ def test_user_not_found(reqres_session, lambda_steps):
 @allure.epic('Test API')
 @allure.feature('DELETE запрос')
 @allure.severity(Severity.CRITICAL)
+@allure.title('Удаления пользователя')
 @allure.step('Запрос для удаления пользователя')
 def test_delete_user(reqres_session,lambda_steps):
     result = reqres_session.delete(url='/api/users/2')
@@ -70,10 +76,10 @@ def test_delete_user(reqres_session,lambda_steps):
 @allure.epic('Test API')
 @allure.feature('POST запрос')
 @allure.severity(Severity.CRITICAL)
-@allure.step('Пользователь не зарегистрирован')
+@allure.title('Неуспешная авторизация')
+@allure.step('Запрос для создания пользователя')
 def test_register_unsuccessful(reqres_session):
     email = 'peter@klaven'
-
     result: Response = reqres_session.post(url='/api/login',
                                            json={"email": email})
 

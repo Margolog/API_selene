@@ -3,6 +3,7 @@ import logging
 import os
 import allure
 import curlify as curlify
+import pytest
 from _pytest.fixtures import FixtureRequest
 from requests import Session, Response
 
@@ -50,9 +51,6 @@ class BaseSession(Session):
     @allure_request_logger
     def request(self, method, url, **kwargs):
         return super().request(method, url=f'{self.base_url}{url}', **kwargs)
-
-
-
 
 
 
