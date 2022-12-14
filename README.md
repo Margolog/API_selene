@@ -11,14 +11,13 @@
 
 ## :gear: В проекте используются следующие технологии и инструменты:
 <p align="center">
-<img width="5%" title="Python" src="https://github.com/MatyukhaQA/delikateska-ui-test-project/blob/master/resources/python.png">
-<img width="6%" title="Pytest" src="https://github.com/MatyukhaQA/delikateska-ui-test-project/blob/master/resources/pytest.png">
-<img width="5%" title="PyCharm" src="https://github.com/MatyukhaQA/delikateska-ui-test-project/blob/master/resources/pycharm.png">
-<img width="6%" title="Jenkins" src="https://github.com/MatyukhaQA/delikateska-ui-test-project/blob/master/resources/jenkins.svg">
-<img width="6%" title="Allure Report" src="https://github.com/Margolog/diplom_API/blob/master/resources/AllureTestOps.png">
-<img width="6%" title="Allure TestOps" src="https://github.com/MatyukhaQA/delikateska-ui-test-project/blob/master/resources/AllureTestOps.png">
-<img width="6%" title="Telegram" src="https://github.com/MatyukhaQA/delikateska-ui-test-project/blob/master/resources/tg.svg">
-<img src="img/logo/Jira.svg" width="50" height="50"  alt="Jira"/>
+<img width="5%" title="Python" src="https://github.com/Margolog/diplom_API/blob/master/resources/python.png">
+<img width="6%" title="Pytest" src="https://github.com/Margolog/diplom_API/blob/master/resources/pytest.png">
+<img width="5%" title="PyCharm" src="https://github.com/Margolog/diplom_API/blob/master/resources/pycharm.png">
+<img width="6%" title="Jenkins" src="https://github.com/Margolog/diplom_API/blob/master/resources/jenkins.svg">
+<img width="6%" title="Allure TestOps" src="https://github.com/Margolog/diplom_API/blob/master/resources/allure.svg">
+<img width="6%" title="Telegram" src="https://github.com/Margolog/diplom_API/blob/master/resources/tg.svg">
+<img width="6%" title="Selene" src="https://github.com/Margolog/diplom_API/blob/master/resources/selene.png">
 </p>
 
 
