@@ -1,5 +1,3 @@
-from unittest import result
-
 import allure
 from allure_commons.types import Severity
 from requests import Response
