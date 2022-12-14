@@ -12,7 +12,7 @@ from pytest_voluptuous import S
 @allure.severity(Severity.CRITICAL)
 @allure.title('Создание пользователя')
 @allure.step('Запрос для создания пользователя')
-def test_create_user(reqres_session, lambda_steps):
+def test_create_user(reqres_session):
     name = 'Margo'
     job = 'Doctor'
 
@@ -52,7 +52,7 @@ def test_update_user(reqres_session):
 @allure.severity(Severity.MINOR)
 @allure.title('Поиск незарегистрированного пользователя')
 @allure.step('Пользователь не найден')
-def test_user_not_found(reqres_session, lambda_steps):
+def test_user_not_found(reqres_session):
     result: Response = reqres_session.get(url='/api/unknown/23')
 
     with allure.step('Проверка статус кода'):
@@ -66,7 +66,7 @@ def test_user_not_found(reqres_session, lambda_steps):
 @allure.severity(Severity.CRITICAL)
 @allure.title('Удаления пользователя')
 @allure.step('Запрос для удаления пользователя')
-def test_delete_user(reqres_session,lambda_steps):
+def test_delete_user(reqres_session):
     result = reqres_session.delete(url='/api/users/2')
 
     with allure.step('Проверка статус кода'):
