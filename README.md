@@ -33,47 +33,48 @@
 > - Удаления пользователя;
 > - Неуспешная авторизация.
 
-## <img width="4%" title="Jenkins" src="img/logo/Jenkins.svg"> Запуск тестов из [Jenkins](https://jenkins.autotests.cloud/job/002-Margologu-API/)
+## Сборка в [Jenkins](https://github.com/Margolog/diplom_API)
+<p align="center">
+  <img src="resources/images/Jenkins.png" alt="Jenkins"/>
+</p>
 
-Для запуска тестов из Jenkins:
-1. Необходимо нажать кнопку "Собрать сейчас".
+## Информация о тестах в [Allure report](https://jenkins.autotests.cloud/job/002-Margologu-API/15/allure/#behaviors/cec508300776df9409898493af0c7156/8839c33da7136177/)
+<p align="center">
+  <img src="resources/images/first.jpg" alt="Allure report"/>
+</p>
 
 
-
-## :bar_chart: Отчеты о прохождении тестов доступны в Allure
-
-
-
-#### Главная страница
-
+### Окно с кейсами
+<p align="center">
+  <img src="resources/images/tests.jpg" alt="Allure report"/>
+</p>
 
 
 #### Графики
+<p align="center">
+  <img src="resources/images/graf.jpg" alt="Allure report"/>
+</p>
+
+## Интеграция с [Allure TestOps](----)
+
+### Тест-кейсы
+<p align="center">
+  <img src="resources/images/testcase.png" alt="Allure TestOps"/>
+</p>
+
+### Дашборд
+<p align="center">
+  <img src="resources/images/dashboard.png" alt="Allure TestOps"/>
+</p>
 
 
+## Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-470)
+<p align="center">
+  <img src="resources/images/jira integration.png" alt="Jira"/>
+</p>
 
-#### Тесты
-
-
-
-
-
-Настроена отправка оточета ботом в Telegram
-
-
-
-## Проект интегрирован с Allure TestOps
-
-
-#### Представлены тест-кейсы
-
-
-
-#### Представлены дашборды аналитики
-
-
-
-#### Представлены запуски
-
-
+## Уведомление в Telegram
+<p align="center">
+  <img src="resources/images/telegram.jpg" alt="Telegram notification"/>
+</p>
 
