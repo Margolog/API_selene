@@ -14,6 +14,7 @@ def test_create_user(reqres_session):
     name = 'Margo'
     job = 'Doctor'
 
+
     result: Response = reqres_session.post(url='/api/users',
                                            json={"name": name, "job": job})
     with allure.step('Проверка статус кода'):
@@ -33,6 +34,7 @@ def test_create_user(reqres_session):
 def test_update_user(reqres_session):
     name = 'Margo'
     job = 'QA'
+
 
     result: Response = reqres_session.put(url='/api/users/2',
                                           json={"name": name, "job": job})
@@ -78,6 +80,8 @@ def test_delete_user(reqres_session):
 @allure.step('Запрос для создания пользователя')
 def test_register_unsuccessful(reqres_session):
     email = 'peter@klaven'
+
+
     result: Response = reqres_session.post(url='/api/login',
                                            json={"email": email})
 
