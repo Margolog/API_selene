@@ -3,8 +3,6 @@ import logging
 import os
 import allure
 import curlify as curlify
-import pytest
-from _pytest.fixtures import FixtureRequest
 from requests import Session, Response
 
 

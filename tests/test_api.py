@@ -5,11 +5,11 @@ from tests.shema.shema import *
 from pytest_voluptuous import S
 
 
-@allure.epic('Test API')
-@allure.feature('POST запрос')
+@allure.epic('API reqres.in')
+@allure.feature('/api/users')
 @allure.severity(Severity.CRITICAL)
 @allure.title('Создание пользователя')
-@allure.step('Запрос для создания пользователя')
+@allure.step('Создание пользователя')
 def test_create_user(reqres_session):
     name = 'Margo'
     job = 'Doctor'
@@ -17,8 +17,9 @@ def test_create_user(reqres_session):
 
     result: Response = reqres_session.post(url='/api/users',
                                            json={"name": name, "job": job})
-    with allure.step('Проверка статус кода'):
-        assert result.status_code == 201
+
+    assert result.status_code == 201, 'Статус код ответа равен 201'
+
     with allure.step('Проверка полей в ответе'):
         assert result.json()['name'] == name
         assert result.json()['job'] == job
@@ -26,11 +27,11 @@ def test_create_user(reqres_session):
         assert result.json() == S(create_user)
 
 
-@allure.epic('Test API')
-@allure.feature('PUT запрос')
+@allure.epic('API reqres.in')
+@allure.feature('/api/users/2')
 @allure.severity(Severity.NORMAL)
 @allure.title('Обновление информации о пользователе')
-@allure.step('Запрос для обновления информации о пользователе')
+@allure.step('Обновление информации о пользователе')
 def test_update_user(reqres_session):
     name = 'Margo'
     job = 'QA'
@@ -38,8 +39,9 @@ def test_update_user(reqres_session):
 
     result: Response = reqres_session.put(url='/api/users/2',
                                           json={"name": name, "job": job})
-    with allure.step('Проверка статус кода'):
-        assert result.status_code == 200
+
+    assert result.status_code == 200, 'Статус код ответа равен 201'
+
     with allure.step('Проверка полей в ответе'):
         assert result.json()['name'] == name
         assert result.json()['job'] == job
@@ -47,37 +49,36 @@ def test_update_user(reqres_session):
         assert result.json() == S(update_user)
 
 
-@allure.epic('Test API')
-@allure.feature('GET запрос')
+@allure.epic('API reqres.in')
+@allure.feature('/api/unknown/23')
 @allure.severity(Severity.MINOR)
 @allure.title('Поиск незарегистрированного пользователя')
-@allure.step('Пользователь не найден')
+@allure.step('Поиск пользователя')
 def test_user_not_found(reqres_session):
     result: Response = reqres_session.get(url='/api/unknown/23')
 
-    with allure.step('Проверка статус кода'):
-        assert result.status_code == 404
+    assert result.status_code == 404, 'Статус код ответа равен 404'
+
     with allure.step('Проверка архитектуры ответа'):
         assert result.json() == S(user_not_found)
 
 
-@allure.epic('Test API')
-@allure.feature('DELETE запрос')
+@allure.epic('API reqres.in')
+@allure.feature('/api/users/2')
 @allure.severity(Severity.CRITICAL)
-@allure.title('Удаления пользователя')
-@allure.step('Запрос для удаления пользователя')
+@allure.title('Удаление пользователя')
+@allure.step('Удаление пользователя')
 def test_delete_user(reqres_session):
     result = reqres_session.delete(url='/api/users/2')
 
-    with allure.step('Проверка статус кода'):
-        assert result.status_code == 204
+    assert result.status_code == 204, 'Статус код ответа равен 204'
 
 
-@allure.epic('Test API')
-@allure.feature('POST запрос')
+@allure.epic('API reqres.in')
+@allure.feature('/api/login')
 @allure.severity(Severity.CRITICAL)
 @allure.title('Неуспешная авторизация')
-@allure.step('Запрос для создания пользователя')
+@allure.step('Создание пользователя')
 def test_register_unsuccessful(reqres_session):
     email = 'peter@klaven'
 
@@ -85,7 +86,7 @@ def test_register_unsuccessful(reqres_session):
     result: Response = reqres_session.post(url='/api/login',
                                            json={"email": email})
 
-    with allure.step('Проверка статус кода'):
-        assert result.status_code == 400
+    assert result.status_code == 400, 'Статус код ответа равен 400'
+
     with allure.step('Проверка архитектуры ответа'):
         assert result.json() == S(register_unsuccessful)

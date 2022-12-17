@@ -1,6 +1,4 @@
-import allure
 import pytest
-from _pytest.fixtures import FixtureRequest
 from utils.base_user import BaseSession
 
 
