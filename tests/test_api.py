@@ -67,7 +67,7 @@ def test_delete_user(reqres_session):
 def test_register_unsuccessful(reqres_session):
     email = 'peter@klaven'
     allure_labels(feature='API reqres.in',
-                  story='Авторизацич /api/login',
+                  story='Авторизация /api/login',
                   title='Неуспешная авторизация')
 
     result = reqres_session.post(url='/api/login',
