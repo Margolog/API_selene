@@ -23,7 +23,7 @@
 
 
 ## :heavy_check_mark: Описание
-В проекте автоматизирована проверка API запросов на сайте reqres.in.
+В проекте автоматизирована проверка API reqres.in.
 
 ## :heavy_check_mark: Что проверяем
 
@@ -40,19 +40,19 @@
 
 ## Информация о тестах в [Allure report](https://jenkins.autotests.cloud/job/002-Margologu-API/allure/)
 <p align="center">
-  <img src="resources/images/first.jpg" alt="Allure report"/>
+  <img src="resources/images/Allure.jpg" alt="Allure report"/>
 </p>
 
 
 ### Окно с кейсами
 <p align="center">
-  <img src="resources/images/tests.jpg" alt="Allure report"/>
+  <img src="resources/images/allure_cases.jpg" alt="Allure report"/>
 </p>
 
 
 #### Графики
 <p align="center">
-  <img src="resources/images/graf.jpg" alt="Allure report"/>
+  <img src="resources/images/allure_graphs.jpg" alt="Allure report"/>
 </p>
 
 ## Интеграция с [Allure TestOps](https://allure.autotests.cloud/launch/17672/tree?search=W3siaWQiOiJzdGF0dXMiLCJ0eXBlIjoidGVzdFN0YXR1c0FycmF5IiwidmFsdWUiOlsicGFzc2VkIl19XQ%3D%3D&treeId=0)
