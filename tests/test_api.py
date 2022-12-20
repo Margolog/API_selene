@@ -1,92 +1,77 @@
 import allure
 from allure_commons.types import Severity
-from requests import Response
 from tests.shema.shema import *
 from pytest_voluptuous import S
 
+from utils.allure_labels import allure_labels
 
-@allure.epic('API reqres.in')
-@allure.feature('/api/users')
+
 @allure.severity(Severity.CRITICAL)
-@allure.title('Создание пользователя')
-@allure.step('Создание пользователя')
 def test_create_user(reqres_session):
     name = 'Margo'
     job = 'Doctor'
+    allure_labels(feature='API reqres.in',
+                  story='Пользователь /api/users',
+                  title='Создание пользователя')
+
+    result = reqres_session.post(url='/api/users',
+                                 json={"name": name, "job": job})
+
+    assert result.status_code == 201, f'Ошибка HTTP {result.status_code}'
+    assert result.json()['name'] == name, f'Поле name != {name}'
+    assert result.json()['job'] == job, f'Поле job != {job}'
+    assert result.json() == S(create_user), 'Ответ не соответствует схеме'
 
 
-    result: Response = reqres_session.post(url='/api/users',
-                                           json={"name": name, "job": job})
-
-    assert result.status_code == 201, 'Статус код ответа равен 201'
-
-    with allure.step('Проверка полей в ответе'):
-        assert result.json()['name'] == name
-        assert result.json()['job'] == job
-    with allure.step('Проверка архитектуры ответа'):
-        assert result.json() == S(create_user)
-
-
-@allure.epic('API reqres.in')
-@allure.feature('/api/users/2')
 @allure.severity(Severity.NORMAL)
-@allure.title('Обновление информации о пользователе')
-@allure.step('Обновление информации о пользователе')
 def test_update_user(reqres_session):
     name = 'Margo'
     job = 'QA'
+    allure_labels(feature='API reqres.in',
+                  story='Пользователь /api/users',
+                  title='Обновление информации о пользователе')
+
+    result = reqres_session.put(url='/api/users/2',
+                                json={"name": name, "job": job})
+
+    assert result.status_code == 200, f'Ошибка HTTP {result.status_code}'
+    assert result.json()['name'] == name, f'Поле name != {name}'
+    assert result.json()['job'] == job, f'Поле job != {job}'
+    assert result.json() == S(update_user), 'Ответ не соответствует схеме'
 
 
-    result: Response = reqres_session.put(url='/api/users/2',
-                                          json={"name": name, "job": job})
-
-    assert result.status_code == 200, 'Статус код ответа равен 201'
-
-    with allure.step('Проверка полей в ответе'):
-        assert result.json()['name'] == name
-        assert result.json()['job'] == job
-    with allure.step('Проверка архитектуры ответа'):
-        assert result.json() == S(update_user)
-
-
-@allure.epic('API reqres.in')
-@allure.feature('/api/unknown/23')
 @allure.severity(Severity.MINOR)
-@allure.title('Поиск незарегистрированного пользователя')
-@allure.step('Поиск пользователя')
 def test_user_not_found(reqres_session):
-    result: Response = reqres_session.get(url='/api/unknown/23')
+    allure_labels(feature='API reqres.in',
+                  story='Неизвестный пользователь /api/unknown',
+                  title='Поиск незарегистрированного пользователя')
 
-    assert result.status_code == 404, 'Статус код ответа равен 404'
+    result = reqres_session.get(url='/api/unknown/23')
 
-    with allure.step('Проверка архитектуры ответа'):
-        assert result.json() == S(user_not_found)
+    assert result.status_code == 404, f'Пришел неожиданный ответ {result.status_code}'
+    assert result.json() == S(user_not_found), 'Ответ не соответствует схеме'
 
 
-@allure.epic('API reqres.in')
-@allure.feature('/api/users/2')
 @allure.severity(Severity.CRITICAL)
-@allure.title('Удаление пользователя')
-@allure.step('Удаление пользователя')
 def test_delete_user(reqres_session):
+    allure_labels(feature='API reqres.in',
+                  story='Пользователь /api/users',
+                  title='Удаление пользователя')
+
     result = reqres_session.delete(url='/api/users/2')
 
-    assert result.status_code == 204, 'Статус код ответа равен 204'
+    assert result.status_code == 204, f'Ошибка HTTP {result.status_code}'
 
 
-@allure.epic('API reqres.in')
-@allure.feature('/api/login')
 @allure.severity(Severity.CRITICAL)
-@allure.title('Неуспешная авторизация')
-@allure.step('Создание пользователя')
 def test_register_unsuccessful(reqres_session):
     email = 'peter@klaven'
+    allure_labels(feature='API reqres.in',
+                  story='Авторизация /api/login',
+                  title='Неуспешная авторизация')
 
+    result = reqres_session.post(url='/api/login',
+                                 json={"email": email})
 
-    result: Response = reqres_session.post(url='/api/login',
-                                           json={"email": email})
-
-    assert result.status_code == 400, 'Статус код ответа равен 400'
-
-    with allure.step('Проверка архитектуры ответа'):
-        assert result.json() == S(register_unsuccessful)
+    assert result.status_code == 400, f'Пришел неожиданный ответ {result.status_code}'
+    assert result.json() == S(register_unsuccessful), 'Ответ не соответствует схеме'

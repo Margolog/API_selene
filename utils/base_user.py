@@ -18,21 +18,21 @@ def allure_request_logger(function):
             with allure.step(f'{method} {url}'):
                 allure.attach(
                     body=curl_message.encode('utf-8'),
-                    name=f'Request {response.request.method} {response.status_code}',
+                    name=f'Request',
                     attachment_type=allure.attachment_type.TEXT,
                     extension='txt'
                 )
                 try:
                     allure.attach(
                         body=json.dumps(response.json(), indent=4, ensure_ascii=False).encode('utf8'),
-                        name=f'Response {response.request.method} {response.status_code}',
+                        name=f'Response {response.status_code}',
                         attachment_type=allure.attachment_type.JSON,
                         extension='json'
                     )
                 except ValueError as error:
                     allure.attach(
                         body=response.text.encode('utf8'),
-                        name=f'NOT JSON Response {response.request.method} {response.status_code}',
+                        name=f'NOT JSON Response {response.status_code}',
                         attachment_type=allure.attachment_type.TEXT,
                         extension='txt'
                     )
