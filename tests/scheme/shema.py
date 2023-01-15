@@ -1,6 +1,6 @@
 from voluptuous import Schema, PREVENT_EXTRA, Any, Optional, All, Length
 
-Support = Schema(
+support = Schema(
     {
         "url": str,
         "text": str
@@ -36,7 +36,7 @@ user_not_found = Schema(
     extra=PREVENT_EXTRA
 )
 
-List_User = Schema(
+list_User = Schema(
     {
         "id": int,
         "email": str,

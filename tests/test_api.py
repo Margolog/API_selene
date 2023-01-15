@@ -1,6 +1,6 @@
 import allure
 from allure_commons.types import Severity
-from tests.shema.shema import *
+from tests.scheme.shema import *
 from pytest_voluptuous import S
 
 from utils.allure_labels import allure_labels
